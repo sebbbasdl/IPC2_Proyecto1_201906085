@@ -5,8 +5,180 @@ from MatrizP import matriz
 import random
 
 raiz=Tk()
+raiz2=Tk()
+
 def espar(n):
     return pow(-1,n)==1
+
+def insertarPiezas(numeroJ,coorx,coory,numeroPieza,color,ventanaJuego):
+    if numeroPieza==1:
+        matrizJuego.insertarM(coorx,coory,numeroJ)
+        matrizJuego.insertarM(coorx+1,coory,numeroJ)
+        matrizJuego.insertarM(coorx+2,coory,numeroJ)
+        matrizJuego.insertarM(coorx+3,coory,numeroJ)
+        matrizJuego.insertarM(coorx+3,coory+1,numeroJ)
+
+        #en interfaz
+        botonmatriz = Button(ventanaJuego, bg=color, width=1, height=1).grid(row=coorx, column=coory)
+        botonmatriz = Button(ventanaJuego, bg=color, width=1, height=1).grid(row=coorx+1, column=coory)
+        botonmatriz = Button(ventanaJuego, bg=color, width=1, height=1).grid(row=coorx+2, column=coory)
+        botonmatriz = Button(ventanaJuego, bg=color, width=1, height=1).grid(row=coorx+3, column=coory)
+        botonmatriz = Button(ventanaJuego, bg=color, width=1, height=1).grid(row=coorx+3, column=coory+1)
+
+    elif numeroPieza==2:
+        matrizJuego.insertarM(coorx,coory.numeroJ)
+        matrizJuego.insertarM(coorx+1,coory,numeroJ)
+        matrizJuego.insertarM(coorx+2, coory , numeroJ)
+        matrizJuego.insertarM(coorx+3, coory , numeroJ)
+        matrizJuego.insertarM(coorx+3, coory-1 , numeroJ)
+
+        #en interfaz
+        botonmatriz = Button(ventanaJuego, bg=color, width=1, height=1).grid(row=coorx, column=coory)
+        botonmatriz = Button(ventanaJuego, bg=color, width=1, height=1).grid(row=coorx+1, column=coory)
+        botonmatriz = Button(ventanaJuego, bg=color, width=1, height=1).grid(row=coorx+2, column=coory)
+        botonmatriz = Button(ventanaJuego, bg=color, width=1, height=1).grid(row=coorx+3, column=coory)
+        botonmatriz = Button(ventanaJuego, bg=color, width=1, height=1).grid(row=coorx+3, column=coory-1)
+
+
+    elif numeroPieza==3:
+        matrizJuego.insertarM(coorx, coory, numeroJ)
+        matrizJuego.insertarM(coorx, coory+1, numeroJ)
+        matrizJuego.insertarM(coorx, coory+2, numeroJ)
+        matrizJuego.insertarM(coorx, coory+3, numeroJ)
+
+        #en interfaz
+        botonmatriz = Button(ventanaJuego, bg=color, width=1, height=1).grid(row=coorx, column=coory)
+        botonmatriz = Button(ventanaJuego, bg=color, width=1, height=1).grid(row=coorx, column=coory+1)
+        botonmatriz = Button(ventanaJuego, bg=color, width=1, height=1).grid(row=coorx, column=coory+2)
+        botonmatriz = Button(ventanaJuego, bg=color, width=1, height=1).grid(row=coorx, column=coory+3)
+
+
+
+
+    elif numeroPieza==4:
+        matrizJuego.insertarM(coorx, coory, numeroJ)
+        matrizJuego.insertarM(coorx+1, coory, numeroJ)
+        matrizJuego.insertarM(coorx, coory+1, numeroJ)
+        matrizJuego.insertarM(coorx+1, coory+1, numeroJ)
+
+        #en interfaz
+
+        botonmatriz = Button(ventanaJuego, bg=color, width=1, height=1).grid(row=coorx, column=coory)
+        botonmatriz = Button(ventanaJuego, bg=color, width=1, height=1).grid(row=coorx+1, column=coory)
+        botonmatriz = Button(ventanaJuego, bg=color, width=1, height=1).grid(row=coorx, column=coory+1)
+        botonmatriz = Button(ventanaJuego, bg=color, width=1, height=1).grid(row=coorx+1, column=coory+1)
+
+
+
+    elif numeroPieza==5:
+        matrizJuego.insertarM(coorx, coory, numeroJ)
+        matrizJuego.insertarM(coorx, coory+1, numeroJ)
+        matrizJuego.insertarM(coorx, coory+2, numeroJ)
+        matrizJuego.insertarM(coorx, coory+3, numeroJ)
+        matrizJuego.insertarM(coorx-1, coory+1, numeroJ)
+        matrizJuego.insertarM(coorx-1, coory+2, numeroJ)
+
+        #en interfaz
+
+        botonmatriz = Button(ventanaJuego, bg=color, width=1, height=1).grid(row=coorx, column=coory)
+        botonmatriz = Button(ventanaJuego, bg=color, width=1, height=1).grid(row=coorx, column=coory+1)
+        botonmatriz = Button(ventanaJuego, bg=color, width=1, height=1).grid(row=coorx, column=coory+2)
+        botonmatriz = Button(ventanaJuego, bg=color, width=1, height=1).grid(row=coorx, column=coory+3)
+        botonmatriz = Button(ventanaJuego, bg=color, width=1, height=1).grid(row=coorx-1, column=coory+1)
+        botonmatriz = Button(ventanaJuego, bg=color, width=1, height=1).grid(row=coorx-1, column=coory+2)
+
+    elif numeroPieza==6:
+        matrizJuego.insertarM(coorx, coory, numeroJ)
+        matrizJuego.insertarM(coorx+1, coory, numeroJ)
+        matrizJuego.insertarM(coorx+2, coory, numeroJ)
+        matrizJuego.insertarM(coorx+3, coory, numeroJ)
+
+        #en interfaz
+
+        botonmatriz = Button(ventanaJuego, bg=color, width=1, height=1).grid(row=coorx, column=coory)
+        botonmatriz = Button(ventanaJuego, bg=color, width=1, height=1).grid(row=coorx+1, column=coory)
+        botonmatriz = Button(ventanaJuego, bg=color, width=1, height=1).grid(row=coorx+2, column=coory)
+        botonmatriz = Button(ventanaJuego, bg=color, width=1, height=1).grid(row=coorx+3, column=coory)
+
+
+
+
+
+def piezasInterfaz(n,ventana):
+    global lblC1,lblC2,lblC3,lblC4,lblC5,lblC6
+    print("Soy n: "+str(n))
+
+    if n == 1:
+
+        lblC2 = Label(ventana, text="         ⬛\n         ⬛\n         ⬛\n  ⬛ ⬛", fg="gray99",
+                      font=("Agency FB", 25)).place(x=1300, y=550)
+        lblC3 = Label(ventana, text="⬛⬛⬛⬛", fg="gray99", font=("Agency FB", 25)).place(x=1300, y=550)
+        lblC4 = Label(ventana, text="⬛⬛\n⬛⬛", fg="gray99", font=("Agency FB", 25)).place(x=1300, y=550)
+        lblC5 = Label(ventana, text="⬛⬛\n⬛⬛⬛⬛", fg="gray99", font=("Agency FB", 25)).place(x=1300, y=550)
+        lblC6 = Label(ventana, text="⬛\n⬛\n⬛\n⬛", fg="gray99", font=("Agency FB", 25)).place(x=1300, y=550)
+        lblC1 = Label(ventana, text="⬛\n⬛\n⬛\n       ⬛ ⬛", fg="gray99", font=("Agency FB", 25)).place(x=1300, y=550)
+
+        lblC1 = Label(ventana, text="⬛\n⬛\n⬛\n       ⬛ ⬛", fg="red", font=("Agency FB", 25)).place(x=1300, y=550)
+    elif n == 2:
+
+        lblC2 = Label(ventana, text="         ⬛\n         ⬛\n         ⬛\n  ⬛ ⬛", fg="gray99",
+                      font=("Agency FB", 25)).place(x=1300, y=550)
+
+        lblC1 = Label(ventana, text="⬛\n⬛\n⬛\n       ⬛ ⬛", fg="gray99", font=("Agency FB", 25)).place(x=1300, y=550)
+
+        lblC3 = Label(ventana, text="⬛⬛⬛⬛", fg="gray99", font=("Agency FB", 25)).place(x=1300, y=550)
+        lblC4 = Label(ventana, text="⬛⬛\n⬛⬛", fg="gray99", font=("Agency FB", 25)).place(x=1300, y=550)
+        lblC5 = Label(ventana, text="⬛⬛\n⬛⬛⬛⬛", fg="gray99", font=("Agency FB", 25)).place(x=1300, y=550)
+        lblC6 = Label(ventana, text="⬛\n⬛\n⬛\n⬛", fg="gray99", font=("Agency FB", 25)).place(x=1300, y=550)
+
+        lblC2 = Label(ventana, text="         ⬛\n         ⬛\n         ⬛\n  ⬛ ⬛", fg="red",
+                      font=("Agency FB", 25)).place(x=1300, y=550)
+
+    elif n == 3:
+        lblC3 = Label(ventana, text="⬛⬛⬛⬛", fg="gray99", font=("Agency FB", 25)).place(x=1300, y=550)
+
+        lblC1 = Label(ventana, text="⬛\n⬛\n⬛\n       ⬛ ⬛", fg="gray99", font=("Agency FB", 25)).place(x=1300, y=550)
+        lblC2 = Label(ventana, text="         ⬛\n         ⬛\n         ⬛\n  ⬛ ⬛", fg="gray99",
+                      font=("Agency FB", 25)).place(x=1300, y=550)
+        lblC4 = Label(ventana, text="⬛⬛\n⬛⬛", fg="gray99", font=("Agency FB", 25)).place(x=1300, y=550)
+        lblC5 = Label(ventana, text="⬛⬛\n⬛⬛⬛⬛", fg="gray99", font=("Agency FB", 25)).place(x=1300, y=550)
+        lblC6 = Label(ventana, text="⬛\n⬛\n⬛\n⬛", fg="gray99", font=("Agency FB", 25)).place(x=1300, y=550)
+
+        lblC3 = Label(ventana, text="⬛⬛⬛⬛", fg="red", font=("Agency FB", 25)).place(x=1300, y=550)
+
+    elif n == 4:
+        lblC4 = Label(ventana, text="⬛⬛\n⬛⬛", fg="gray99", font=("Agency FB", 25)).place(x=1300, y=550)
+
+        lblC1 = Label(ventana, text="⬛\n⬛\n⬛\n       ⬛ ⬛", fg="gray99", font=("Agency FB", 25)).place(x=1300, y=550)
+        lblC2 = Label(ventana, text="         ⬛\n         ⬛\n         ⬛\n  ⬛ ⬛", fg="gray99",
+                      font=("Agency FB", 25)).place(x=1300, y=550)
+        lblC3 = Label(ventana, text="⬛⬛⬛⬛", fg="gray99", font=("Agency FB", 25)).place(x=1300, y=550)
+        lblC5 = Label(ventana, text="⬛⬛\n⬛⬛⬛⬛", fg="gray99", font=("Agency FB", 25)).place(x=1300, y=550)
+        lblC6 = Label(ventana, text="⬛\n⬛\n⬛\n⬛", fg="gray99", font=("Agency FB", 25)).place(x=1300, y=550)
+
+        lblC4 = Label(ventana, text="⬛⬛\n⬛⬛", fg="red", font=("Agency FB", 25)).place(x=1300, y=550)
+    elif n == 5:
+
+        lblC5 = Label(ventana, text="⬛⬛\n⬛⬛⬛⬛", fg="gray99", font=("Agency FB", 25)).place(x=1300, y=550)
+
+        lblC1 = Label(ventana, text="⬛\n⬛\n⬛\n       ⬛ ⬛", fg="gray99", font=("Agency FB", 25)).place(x=1300, y=550)
+        lblC2 = Label(ventana, text="         ⬛\n         ⬛\n         ⬛\n  ⬛ ⬛", fg="gray99",
+                      font=("Agency FB", 25)).place(x=1300, y=550)
+        lblC3 = Label(ventana, text="⬛⬛⬛⬛", fg="gray99", font=("Agency FB", 25)).place(x=1300, y=550)
+        lblC4 = Label(ventana, text="⬛⬛\n⬛⬛", fg="gray99", font=("Agency FB", 25)).place(x=1300, y=550)
+        lblC6 = Label(ventana, text="⬛\n⬛\n⬛\n⬛", fg="gray99", font=("Agency FB", 25)).place(x=1300, y=550)
+
+        lblC5 = Label(ventana, text="⬛⬛\n⬛⬛⬛⬛", fg="red", font=("Agency FB", 25)).place(x=1300, y=550)
+    elif n == 6:
+        lblC6 = Label(ventana, text="⬛\n⬛\n⬛\n⬛", fg="gray99", font=("Agency FB", 25)).place(x=1300, y=550)
+
+        lblC1 = Label(ventana, text="⬛\n⬛\n⬛\n       ⬛ ⬛", fg="gray99", font=("Agency FB", 25)).place(x=1300, y=550)
+        lblC2 = Label(ventana, text="         ⬛\n         ⬛\n         ⬛\n  ⬛ ⬛", fg="gray99",
+                      font=("Agency FB", 25)).place(x=1300, y=550)
+        lblC3 = Label(ventana, text="⬛⬛⬛⬛", fg="gray99", font=("Agency FB", 25)).place(x=1300, y=550)
+        lblC4 = Label(ventana, text="⬛⬛\n⬛⬛", fg="gray99", font=("Agency FB", 25)).place(x=1300, y=550)
+        lblC5 = Label(ventana, text="⬛⬛\n⬛⬛⬛⬛", fg="gray99", font=("Agency FB", 25)).place(x=1300, y=550)
+        lblC6=Label(ventana, text="⬛\n⬛\n⬛\n⬛", fg="red", font=("Agency FB", 25)).place(x=1300, y=550)
 
 
 def buscaArchivo():
@@ -52,7 +224,8 @@ def procesoPartida():
 
     def panelJuego():
         global numeroxd
-        numeroxd=random.randint(0,10)
+
+        numeroxd=random.randint(1,6)
 
         print("xd2"+str(turno))
         contador=0
@@ -64,7 +237,7 @@ def procesoPartida():
         ventanaJuego = Tk()
         ventanaJuego.geometry("1920x1080")
         ventanaJuego.title("Juego")
-
+        piezasInterfaz(numeroxd, ventanaJuego)
         print(m)
         print(n)
         for m1 in range(m):
@@ -93,28 +266,40 @@ def procesoPartida():
         lblFJ1 = Label(ventanaJuego, text="Coordenada X:", font=("Agency FB", 10)).place(x=1000+10, y=50+40)
         lblColJ1 = Label(ventanaJuego, text="Coordenada Y:", font=("Agency FB", 10)).place(x=1000+275, y=50+40)
 
-        entradaFJ1 = IntVar()
-        entradaCJ1 = IntVar()
-        txtFJ = Entry(ventanaJuego, textvariable=entradaFJ1).place(x=1000+70, y=50+40)
-        txtCJ = Entry(ventanaJuego, textvariable=entradaCJ1).place(x=1000+340, y=50+40)
+
+        entradaX = IntVar()
+        entradaY = IntVar()
+
+        txtF = Entry(ventanaJuego, textvariable=entradaX).place(x=1000+70, y=50+40)
+        txtC = Entry(ventanaJuego, textvariable=entradaY).place(x=1000+340, y=50+40)
+
 
         def prueba1():
             global turno,numeroxd
-            print("hoja jeje")
+
+
             turno += 1
-            print(turno)
             print("->"+str(numeroxd))
+            cx = entradaX.get()
+            cy = entradaY.get()
+            print("(" + str(cx) + str(cy) + ")")
+
+
+            piezasInterfaz(numeroxd, ventanaJuego)
             if espar(turno) == True:
                 lblCJJ = Label(ventanaJuego, text=jugador1, bg=c1, font=("Arial", 14)).place(x=1000 + 10, y=10)
+                numJugador=1
+                insertarPiezas(numJugador,cx,cy,numeroxd,c1,ventanaJuego)
+
             else:
                 lblCJJ = Label(ventanaJuego, text=jugador2, bg=c2, font=("Arial", 14)).place(x=1000 + 10, y=10)
+                numJugador=2
+                insertarPiezas(numJugador, cx, cy, numeroxd, c2, ventanaJuego)
+            numeroxd = random.randint(1, 6)
 
-            numeroxd=random.randint(0,10)
-            
 
 
-
-        botonInsertar = Button(ventanaJuego,command=prueba1, text="Insertar Jugador1", bg=colorb, width=anchob,height=altob).place(x=1143, y=150)
+        botonInsertar = Button(ventanaJuego,command=prueba1, text="Insertar", bg=colorb, width=anchob,height=altob).place(x=1143, y=150)
 
         """#Insertar jugador2
 
@@ -143,10 +328,14 @@ def procesoPartida():
 
 ventanaP=Tk()
 
+
+
 ventanaP.title("Menu Principal")
 ventanaP.geometry("1920x1080")
 ventanaP.configure(background="gray20")
 
+
+matrizJuego=matriz()
 turno=0
 turnoJugador=StringVar()
 colorb="gray99"
@@ -160,44 +349,12 @@ botonTablero= Button(ventanaP, text="Tablero",bg=colorb,width=anchob,height=alto
 botonReporte= Button(ventanaP, text="Reportes",bg=colorb,width=anchob,height=altob).grid(row=4,column=0)
 
 
+
+
 numeroR=random.randint(1,6)
 print(numeroR)
 
-if numeroR==1:
-    Bcoordenadas = Button(ventanaP, bg="gray48", width=1, height=1).place(x=1143, y=430)
-    Bcoordenadas = Button(ventanaP, bg="gray48", width=1, height=1).place(x=1143, y=457)
-    Bcoordenadas = Button(ventanaP, bg="gray48", width=1, height=1).place(x=1143, y=484)
-    Bcoordenadas = Button(ventanaP, bg="gray48", width=1, height=1).place(x=1143, y=511)
-    Bcoordenadas = Button(ventanaP, bg="gray48", width=1, height=1).place(x=1160, y=511)
-elif numeroR==2:
-    Bcoordenadas = Button(ventanaP, bg="gray48", width=1, height=1).place(x=1160, y=430)
-    Bcoordenadas = Button(ventanaP, bg="gray48", width=1, height=1).place(x=1160, y=457)
-    Bcoordenadas = Button(ventanaP, bg="gray48", width=1, height=1).place(x=1160, y=484)
-    Bcoordenadas = Button(ventanaP, bg="gray48", width=1, height=1).place(x=1160, y=511)
-    Bcoordenadas = Button(ventanaP, bg="gray48", width=1, height=1).place(x=1143, y=511)
 
-elif numeroR == 3:
-    Bcoordenadas = Button(ventanaP, bg="gray48", width=1, height=1).place(x=1143, y=430)
-    Bcoordenadas = Button(ventanaP, bg="gray48", width=1, height=1).place(x=1160, y=430)
-    Bcoordenadas = Button(ventanaP, bg="gray48", width=1, height=1).place(x=1177, y=430)
-    Bcoordenadas = Button(ventanaP, bg="gray48", width=1, height=1).place(x=1194, y=430)
-elif numeroR == 4:
-    Bcoordenadas = Button(ventanaP, bg="gray48", width=1, height=1).place(x=1143, y=430)
-    Bcoordenadas = Button(ventanaP, bg="gray48", width=1, height=1).place(x=1160, y=430)
-    Bcoordenadas = Button(ventanaP, bg="gray48", width=1, height=1).place(x=1143, y=457)
-    Bcoordenadas = Button(ventanaP, bg="gray48", width=1, height=1).place(x=1160, y=457)
-elif numeroR == 5:
-    Bcoordenadas = Button(ventanaP, bg="gray48", width=1, height=1).place(x=1143, y=430)
-    Bcoordenadas = Button(ventanaP, bg="gray48", width=1, height=1).place(x=1160, y=430)
-    Bcoordenadas = Button(ventanaP, bg="gray48", width=1, height=1).place(x=1177, y=430)
-    Bcoordenadas = Button(ventanaP, bg="gray48", width=1, height=1).place(x=1194, y=430)
-    Bcoordenadas = Button(ventanaP, bg="gray48", width=1, height=1).place(x=1160, y=403)
-    Bcoordenadas = Button(ventanaP, bg="gray48", width=1, height=1).place(x=1177, y=403)
-elif numeroR == 6:
-    Bcoordenadas = Button(ventanaP, bg="gray48", width=1, height=1).place(x=1143, y=430)
-    Bcoordenadas = Button(ventanaP, bg="gray48", width=1, height=1).place(x=1143, y=457)
-    Bcoordenadas = Button(ventanaP, bg="gray48", width=1, height=1).place(x=1143, y=484)
-    Bcoordenadas = Button(ventanaP, bg="gray48", width=1, height=1).place(x=1143, y=511)
 
 #pieza1
 """Bcoordenadas = Button(ventanaP, bg="gray48", width=1, height=1).place(x=1143,y=430)
@@ -238,12 +395,11 @@ Bcoordenadas = Button(ventanaP, bg="gray48", width=1, height=1).place(x=1194,y=4
 Bcoordenadas = Button(ventanaP, bg="gray48", width=1, height=1).place(x=1160,y=403)
 Bcoordenadas = Button(ventanaP, bg="gray48", width=1, height=1).place(x=1177,y=403)"""
 
-#pieza6
+
 """Bcoordenadas = Button(ventanaP, bg="gray48", width=1, height=1).place(x=1143,y=430)
 Bcoordenadas = Button(ventanaP, bg="gray48", width=1, height=1).place(x=1143,y=457)
 Bcoordenadas = Button(ventanaP, bg="gray48", width=1, height=1).place(x=1143,y=484)
 Bcoordenadas = Button(ventanaP, bg="gray48", width=1, height=1).place(x=1143,y=511)"""
-
 
 
 
