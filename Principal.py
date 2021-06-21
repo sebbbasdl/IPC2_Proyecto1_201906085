@@ -5,10 +5,46 @@ from MatrizP import matriz
 import random
 
 raiz=Tk()
-raiz2=Tk()
 
 def espar(n):
     return pow(-1,n)==1
+
+def verificacion(coorx,coory):
+    contadorE=0
+    prueba0=matrizJuego.obtenerValorporPosicion(coorx,coory)
+    prueba1=matrizJuego.obtenerValorporPosicion(coorx,coory-1)
+    prueba2=matrizJuego.obtenerValorporPosicion(coorx,coory+1)
+    prueba3=matrizJuego.obtenerValorporPosicion(coorx+1,coory)
+    prueba4=matrizJuego.obtenerValorporPosicion(coorx-1,coory)
+    print("----------------")
+    print("en el lugar "+str(prueba0))
+    print("izquierda "+str(prueba1))
+    print("derecha "+ str(prueba2))
+    print("abajo "+str(prueba3))
+    print("arriba "+str(prueba4))
+
+    if str(prueba0)=="None":
+        contadorE+=1
+    if str(prueba1)=="None":
+
+        contadorE+=1
+    if str(prueba2)=="None":
+        contadorE+=1
+    if str(prueba3)=="None":
+        contadorE+=1
+    if str(prueba4)=="None":
+        contadorE+=1
+        print(contadorE)
+    print(contadorE)
+    if contadorE==5:
+        return True
+    else:
+        return False
+
+
+
+
+
 
 def insertarPiezas(numeroJ,coorx,coory,numeroPieza,color,ventanaJuego):
     if numeroPieza==1:
@@ -26,7 +62,7 @@ def insertarPiezas(numeroJ,coorx,coory,numeroPieza,color,ventanaJuego):
         botonmatriz = Button(ventanaJuego, bg=color, width=1, height=1).grid(row=coorx+3, column=coory+1)
 
     elif numeroPieza==2:
-        matrizJuego.insertarM(coorx,coory.numeroJ)
+        matrizJuego.insertarM(coorx,coory,numeroJ)
         matrizJuego.insertarM(coorx+1,coory,numeroJ)
         matrizJuego.insertarM(coorx+2, coory , numeroJ)
         matrizJuego.insertarM(coorx+3, coory , numeroJ)
@@ -192,30 +228,30 @@ def procesoPartida():
 
 
     print("xd"+str(turno))
-    ventana2 = Tk()
-    ventana2.geometry("500x300+100+100")
-    ventana2.title("Obteniendo Valores")
+    ventanaJuego = Tk()
+    ventanaJuego.geometry("1920x1080")
+    ventanaJuego.title("Juego")
     jugador1 = "Jugador1"
     jugador2 = "Jugador2"
 
-    lblC = Label(ventana2,text="Ingrese el tamaño del tablero:", font=("Agency FB", 14)).place(x=10, y=10)
-    lblF = Label(ventana2,text="No. de Filas:", font=("Agency FB", 10)).place(x=20, y=50)
-    lblCol = Label(ventana2,text="No. de Columnas:", font=("Agency FB", 10)).place(x=270, y=50)
+    lblC = Label(ventanaJuego,text="Ingrese el tamaño del tablero:", font=("Agency FB", 14)).place(x=1000+10, y=10)
+    lblF = Label(ventanaJuego,text="No. de Filas:", font=("Agency FB", 10)).place(x=1000+20, y=50)
+    lblCol = Label(ventanaJuego,text="No. de Columnas:", font=("Agency FB", 10)).place(x=1000+270, y=50)
     
     
     entradaF = IntVar()
     entradaC = IntVar()
-    txtF = Entry(ventana2, textvariable=entradaF).place(x=70, y=50)
-    txtC = Entry(ventana2, textvariable=entradaC).place(x=340, y=50)
+    txtF = Entry(ventanaJuego, textvariable=entradaF).place(x=1000+70, y=50)
+    txtC = Entry(ventanaJuego, textvariable=entradaC).place(x=1000+340, y=50)
 
 
-    lblColores2 = Label(ventana2, text="Escribe las opciones de color en los espacios: \"blue\", \"red\", \"yellow\", \"green\"", font=("Agency FB", 12)).place(x=10, y=90)
-    lblC1 = Label(ventana2, text="Color Jugador1:", font=("Agency FB", 10)).place(x=20, y=150)
-    lblC2 = Label(ventana2, text="Color Jugador2:", font=("Agency FB", 10)).place(x=270, y=150)
+    lblColores2 = Label(ventanaJuego, text="Escribe las opciones de color en los espacios: \"blue\", \"red\", \"yellow\", \"green\"", font=("Agency FB", 12)).place(x=1000+10, y=90)
+    lblC1 = Label(ventanaJuego, text="Color Jugador1:", font=("Agency FB", 10)).place(x=1000+20, y=150)
+    lblC2 = Label(ventanaJuego, text="Color Jugador2:", font=("Agency FB", 10)).place(x=1000+270, y=150)
     color1 = StringVar()
     color2 = StringVar()
-    txtC1 = Entry(ventana2, textvariable=color1).place(x=90, y=150)
-    txtC2 = Entry(ventana2, textvariable=color2).place(x=340, y=150)
+    txtC1 = Entry(ventanaJuego, textvariable=color1).place(x=1000+90, y=150)
+    txtC2 = Entry(ventanaJuego, textvariable=color2).place(x=1000+340, y=150)
 
 
 
@@ -234,9 +270,7 @@ def procesoPartida():
         m=entradaF.get()
         n=entradaC.get()
 
-        ventanaJuego = Tk()
-        ventanaJuego.geometry("1920x1080")
-        ventanaJuego.title("Juego")
+
         piezasInterfaz(numeroxd, ventanaJuego)
         print(m)
         print(n)
@@ -261,45 +295,89 @@ def procesoPartida():
 
         #INsertar jugador 1
 
-        lblCJJ = Label(ventanaJuego, text=jugador1, bg=c1, font=("Arial", 14)).place(x=1000 + 10, y=10)
-        lblCJJ1 = Label(ventanaJuego, text="Ingrese coordenadas para la pieza:", font=("Agency FB", 14)).place(x=1000+10, y=10+40)
-        lblFJ1 = Label(ventanaJuego, text="Coordenada X:", font=("Agency FB", 10)).place(x=1000+10, y=50+40)
-        lblColJ1 = Label(ventanaJuego, text="Coordenada Y:", font=("Agency FB", 10)).place(x=1000+275, y=50+40)
+        lblCJJ = Label(ventanaJuego, text=jugador1, bg=c1, font=("Arial", 14)).place(x=1000 + 10, y=250+10)
+        lblCJJ1 = Label(ventanaJuego, text="Ingrese coordenadas para la pieza:", font=("Agency FB", 14)).place(x=1000+10, y=250+10+40)
+        lblFJ1 = Label(ventanaJuego, text="Fila:", font=("Agency FB", 10)).place(x=1000+10, y=250+50+40)
+        lblColJ1 = Label(ventanaJuego, text="Columna:", font=("Agency FB", 10)).place(x=1000+275, y=250+50+40)
 
 
         entradaX = IntVar()
         entradaY = IntVar()
 
-        txtF = Entry(ventanaJuego, textvariable=entradaX).place(x=1000+70, y=50+40)
-        txtC = Entry(ventanaJuego, textvariable=entradaY).place(x=1000+340, y=50+40)
+        txtF = Entry(ventanaJuego, textvariable=entradaX).place(x=1000+70, y=250+50+40)
+        txtC = Entry(ventanaJuego, textvariable=entradaY).place(x=1000+340, y=250+50+40)
 
 
         def prueba1():
-            global turno,numeroxd
+            global turno,numeroxd,contadorError
 
 
-            turno += 1
+
+            print("Turno: "+str(turno))
             print("->"+str(numeroxd))
-            cx = entradaX.get()
-            cy = entradaY.get()
+            cx = entradaX.get()-1
+            cy = entradaY.get()-1
             print("(" + str(cx) + str(cy) + ")")
 
+            """if turno==0:
 
-            piezasInterfaz(numeroxd, ventanaJuego)
+                insertarPiezas(1, cx, cy, numeroxd, c1, ventanaJuego)
+                numeroxd = random.randint(1, 6)
+                piezasInterfaz(numeroxd, ventanaJuego)
+                lblCJJ = Label(ventanaJuego, text=jugador2, bg=c2, font=("Arial", 14)).place(x=1000 + 10, y=250 + 10)
+
+            else:"""
+
+
             if espar(turno) == True:
-                lblCJJ = Label(ventanaJuego, text=jugador1, bg=c1, font=("Arial", 14)).place(x=1000 + 10, y=10)
-                numJugador=1
-                insertarPiezas(numJugador,cx,cy,numeroxd,c1,ventanaJuego)
+
+
+                if verificacion(cx,cy)==True:
+                    lblCJJ = Label(ventanaJuego, text=jugador2, bg=c2, font=("Arial", 14)).place(x=1000 + 10,
+                                                                                                 y=250 + 10)
+
+
+                    numJugador = 1
+                    insertarPiezas(numJugador,cx,cy,numeroxd,c1,ventanaJuego)
+                    contadorError=0
+                    numeroxd = random.randint(1, 6)
+                    piezasInterfaz(numeroxd, ventanaJuego)
+                    turno=1
+                else:
+                    contadorError+=1
+                    lblCE = Label(ventanaJuego, text="Cantidad Errores: " + str(contadorError), bg=c1,
+                                  font=("Arial", 14)).place(x=1150 + 10,
+                                                            y=250 + 10)
+
 
             else:
-                lblCJJ = Label(ventanaJuego, text=jugador2, bg=c2, font=("Arial", 14)).place(x=1000 + 10, y=10)
-                numJugador=2
-                insertarPiezas(numJugador, cx, cy, numeroxd, c2, ventanaJuego)
-            numeroxd = random.randint(1, 6)
+
+
+                if verificacion(cx,cy)==True:
+                    lblCJJ = Label(ventanaJuego, text=jugador1, bg=c1, font=("Arial", 14)).place(x=1000 + 10,
+                                                                                                 y=250 + 10)
+
+
+                    numJugador = 2
+
+                    insertarPiezas(numJugador, cx, cy, numeroxd, c2, ventanaJuego)
+
+                    contadorError=0
+                    numeroxd = random.randint(1, 6)
+                    piezasInterfaz(numeroxd, ventanaJuego)
+                    turno=0
+                else:
+                    contadorError+=1
+                    lblCE = Label(ventanaJuego, text="Cantidad Errores: " + str(contadorError), bg=c2,
+                                  font=("Arial", 14)).place(x=1150 + 10,
+                                                            y=250 + 10)
+
+
+            print("Error: "+str(contadorError))
 
 
 
-        botonInsertar = Button(ventanaJuego,command=prueba1, text="Insertar", bg=colorb, width=anchob,height=altob).place(x=1143, y=150)
+        botonInsertar = Button(ventanaJuego,command=prueba1, text="Insertar", bg=colorb, width=anchob,height=altob).place(x=1143, y=250+150)
 
         """#Insertar jugador2
 
@@ -318,7 +396,7 @@ def procesoPartida():
 
         botonInsertar = Button(ventanaJuego, text="Insertar Jugador2", bg=colorb, width=anchob,height=altob).place(x=1143, y=150+200)"""
 
-    botonJugar = Button(ventana2,command=panelJuego, text="Iniciar Juego",bg=colorb,width=anchob,height=altob).place(x=180,y=250)
+    botonJugar = Button(ventanaJuego,command=panelJuego, text="Iniciar Juego",bg=colorb,width=anchob,height=altob).place(x=1000+180,y=190)
 
 
 
@@ -342,7 +420,7 @@ colorb="gray99"
 colorb1="sky blue"
 anchob=25
 altob=1
-
+contadorError=0
 botonAbrir= Button(ventanaP, text="Abrir Archivo",command=buscaArchivo,bg=colorb,width=anchob,height=altob).grid(row=1,column=0)
 botonIniciar= Button(ventanaP, text="Iniciar Partida",command=procesoPartida,bg=colorb,width=anchob,height=altob).grid(row=2,column=0)
 botonTablero= Button(ventanaP, text="Tablero",bg=colorb,width=anchob,height=altob).grid(row=3,column=0)
@@ -400,8 +478,6 @@ Bcoordenadas = Button(ventanaP, bg="gray48", width=1, height=1).place(x=1177,y=4
 Bcoordenadas = Button(ventanaP, bg="gray48", width=1, height=1).place(x=1143,y=457)
 Bcoordenadas = Button(ventanaP, bg="gray48", width=1, height=1).place(x=1143,y=484)
 Bcoordenadas = Button(ventanaP, bg="gray48", width=1, height=1).place(x=1143,y=511)"""
-
-
 
 
 
