@@ -99,13 +99,13 @@ class matriz:
             eFila=eFila.siguiente
 """prueba=matriz()
 prueba.insertarM(1,0,"rojo")
-prueba.insertarM(1,2,"azul")
+prueba.insertarM(1,2,"None")
 
 prueba.recorrerC()
 prueba.recorrerF()
 
 valorxd=str(prueba.obtenerValorporPosicion(1,0))
-valor=str(prueba.obtenerValorporPosicion(1,1))
+valor=str(prueba.obtenerValorporPosicion(1,2))
 
 print(valorxd)
 print(valor)"""
