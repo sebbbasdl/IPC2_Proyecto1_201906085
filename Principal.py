@@ -5,6 +5,7 @@ from MatrizP import matriz
 import random
 from tkinter import messagebox
 from xml.dom import minidom
+import webbrowser as wb
 
 raiz=Tk()
 
@@ -775,10 +776,12 @@ def procesoPartida():
 
 
 
+
     print("Obteniendo valores del tablero mxn")
 
     def panelJuego():
         global numeroxd
+
 
         numeroxd=random.randint(1,6)
 
@@ -900,35 +903,68 @@ def procesoPartida():
                 messagebox.showinfo("GANADOR: ", "Jugador1 ")
                 botonInsertar = Button(ventanaJuego, command=prueba1, text="Insertar", bg=colorb, width=anchob,
                                        height=altob, state=DISABLED).place(x=1143, y=250 + 150)
+                ganador = "Jugador 1"
 
             elif cantidadPiezasJ2>cantidadPiezasJ2:
                 print("Gano Jugador 2")
                 messagebox.showinfo("GANADOR: ", "Jugador2 ")
                 botonInsertar = Button(ventanaJuego, command=prueba1, text="Insertar", bg=colorb, width=anchob,
                                        height=altob, state=DISABLED).place(x=1143, y=250 + 150)
+                ganador = "Jugador 2"
 
             elif cantidadPiezasJ2==cantidadPiezasJ1:
                 print("Empate")
                 messagebox.showinfo("EMPATE ", "Jugador1: "+str(cantidadPiezasJ1)+"\nJugador2: "+str(cantidadPiezasJ2))
                 botonInsertar = Button(ventanaJuego, command=prueba1, text="Insertar", bg=colorb, width=anchob,
                                        height=altob, state=DISABLED).place(x=1143, y=250 + 150)
+                ganador = "Empate"
 
 
         def prueba1():
-            global turno,numeroxd,contadorError, cantidadPiezasJ1,cantidadPiezasJ2
+            global turno,numeroxd,contadorError, cantidadPiezasJ1,cantidadPiezasJ2,DatosJugador1,DatosJugador2, ganador
 
-
-
-
-
-            print("Turno: "+str(turno))
-            print("->"+str(numeroxd))
-            cx = entradaX.get()-1
-            cy = entradaY.get()-1
+            print("Turno: " + str(turno))
+            print("->" + str(numeroxd))
+            cx = entradaX.get() - 1
+            cy = entradaY.get() - 1
             print("(" + str(cx) + str(cy) + ")")
+            v = verificacion(cx, cy, numeroxd, m, n, matrizJuego)
+            print("V: " + str(v))
 
-            v=verificacion(cx, cy, numeroxd, m, n,matrizJuego)
-            print("V: "+str(v))
+
+
+            #html
+
+
+
+            archivohtml = open("reporte.html", "w")
+            archivohtml.write("<html>\n")
+            archivohtml.write("<head>\n")
+            archivohtml.write("\t<tittle>REPORTE</tittle>\n")
+            archivohtml.write("</head>\n")
+            archivohtml.write("<body>\n")
+            archivohtml.write("\t<style>\n")
+            archivohtml.write("#inicio{\nborder:solid 2px black;\nwidth: 80%\nmargin:0 auto;\npadding:5px;\ntext-align:center;\n\n}\nfieldset{\nmargin-bottom: 10px\ntext-align:right;\n}\nlegend{\nborder:solid 3px green;\npadding: 5px;\nfont-weight: bold;\nborder-radius: 20px\nbody{\nbackground: url(fondo.jpg);\nbackground-size: 100%\n\n}")
+            archivohtml.write("\n\t</style>\n")
+            archivohtml.write("<div id=\"inicio\">\n")
+            archivohtml.write("<h2>El tamaño de la matriz es:" +str(m)+"X"+str(n)+ "</h2><br>\n")
+            archivohtml.write("\t<fieldset>\n")
+            archivohtml.write("\t\t<legend>Jugador1: "+c1+" Cantidad de piezas incertadas:"+str(cantidadPiezasJ1)+"</legend>\n")
+            archivohtml.write("\t\t<h5>" + DatosJugador1+"<br>")
+            archivohtml.write("\t\t+</h5>\n")
+            archivohtml.write("\t</fieldset>\n")
+            archivohtml.write("\t<fieldset>\n")
+            archivohtml.write("\t\t<legend>Jugador2: "+c2+" Cantidad de piezas incertadas:"+str(cantidadPiezasJ2)+"</legend>\n")
+            archivohtml.write("\t\t<h5>" + DatosJugador2+"<br>")
+            archivohtml.write("\t\t+</h5>\n")
+            archivohtml.write("\t</fieldset>\n")
+            archivohtml.write("</div>\n")
+            archivohtml.write("</body>")
+
+
+
+
+
 
 
 
@@ -939,6 +975,8 @@ def procesoPartida():
                 if verificacion(cx,cy,numeroxd,m,n,matrizJuego)==True:
                     lblCJJ = Label(ventanaJuego, text=jugador2, bg=c2, font=("Arial", 14)).place(x=1000 + 10,
                                                                                                  y=250 + 10)
+
+                    DatosJugador1+="Inserta Pieza "+str(numeroxd)+" en fila: "+str(cx+1)+", columna: "+str(cy+1)+"<br>\n"
 
 
                     numJugador = 1
@@ -960,8 +998,10 @@ def procesoPartida():
 
                     if contadorError==2:
                         turno=1
+                        DatosJugador1 +="Error al insertar Pieza "+str(numeroxd)+" en fila:"  + str(cx+1) + ", columna: " + str(cy+1) + ", Numero de errores: "+str(contadorError)+"<br>\n"
                         contadorError=0
                         print("perdio j1")
+
                         lblCJJ = Label(ventanaJuego, text=jugador2, bg=c2, font=("Arial", 14)).place(x=1000 + 10,
                                                                                                      y=250 + 10)
                         lblCE = Label(ventanaJuego, text="Cantidad Errores: " + str(contadorError), bg=c2,
@@ -978,7 +1018,7 @@ def procesoPartida():
 
 
                     numJugador = 2
-
+                    DatosJugador2 += "Inserta Pieza "+str(numeroxd)+" en fila: "+str(cx+1)+", columna: "+str(cy+1)+"<br>\n"
                     insertarPiezas(numJugador, cx, cy, numeroxd, c2, ventanaJuego,matrizJuego)
 
                     contadorError=0
@@ -999,6 +1039,7 @@ def procesoPartida():
 
                     if contadorError==2:
                         print("perdio J2")
+                        DatosJugador2 += "Error al insertar Pieza "+str(numeroxd)+" en fila:"  + str(cx+1) + ", columna: " + str(cy+1) + ", Numero de errores: "+str(contadorError)+"<br>\n"
                         turno=0
                         contadorError=0
                         lblCJJ = Label(ventanaJuego, text=jugador1, bg=c1, font=("Arial", 14)).place(x=1000 + 10,
@@ -1009,14 +1050,17 @@ def procesoPartida():
                                                                 y=250 + 10)
 
 
+
             print("Error: "+str(contadorError))
 
             if cantidad==cantidadPiezasJ1:
                 print("Gano Jugador 1")
                 messagebox.showinfo("GANADOR: ","Jugador1 " )
+                ganador="Jugador 1"
                 botonInsertar=Button(ventanaJuego,command=prueba1, text="Insertar", bg=colorb, width=anchob,height=altob, state=DISABLED).place(x=1143, y=250+150)
             elif cantidad==cantidadPiezasJ2:
                 print("Gano Jugador 2")
+                ganador="Jugador 2"
                 messagebox.showinfo("GANADOR:","Jugador2 ")
                 botonInsertar = Button(ventanaJuego, command=prueba1, text="Insertar", bg=colorb, width=anchob,
                                        height=altob, state=DISABLED).place(x=1143, y=250 + 150)
@@ -1046,7 +1090,16 @@ def procesoPartida():
 
 
 
+def reporte():
+    wb.open_new(r'reporte.html')
 
+
+def ayuda():
+    ventanaAyuda=Tk()
+    ventanaAyuda.title("Ayuda")
+    ventanaAyuda.geometry("500x200")
+    botonAbrir = Button(ventanaAyuda, text="Sebastian Alejandro de Leon Tenaz, 201906085", bg=colorb, width=45,
+                        height=altob).place(x=100, y=80)
 
 
 ventanaP=Tk()
@@ -1057,7 +1110,9 @@ ventanaP.title("Menu Principal")
 ventanaP.geometry("1920x1080")
 ventanaP.configure(background="gray20")
 
-
+DatosJugador1 = ""
+DatosJugador2 = ""
+ganador=""
 #matrizJuego=matriz()
 turno=0
 turnoJugador=StringVar()
@@ -1071,8 +1126,8 @@ cantidadPiezasJ2=0
 
 botonAbrir= Button(ventanaP, text="Abrir Archivo",command=buscaArchivo,bg=colorb,width=anchob,height=altob).grid(row=1,column=0)
 botonIniciar= Button(ventanaP, text="Iniciar Partida",command=procesoPartida,bg=colorb,width=anchob,height=altob).grid(row=2,column=0)
-botonReporte= Button(ventanaP, text="Tablero",bg=colorb,width=anchob,height=altob).grid(row=3,column=0)
-botonAyuda= Button(ventanaP, text="Ayuda",bg=colorb,width=anchob,height=altob).grid(row=4,column=0)
+botonReporte= Button(ventanaP, command=reporte,text="Reporte HTML",bg=colorb,width=anchob,height=altob).grid(row=3,column=0)
+botonAyuda= Button(ventanaP,command=ayuda, text="Ayuda",bg=colorb,width=anchob,height=altob).grid(row=4,column=0)
 
 
 

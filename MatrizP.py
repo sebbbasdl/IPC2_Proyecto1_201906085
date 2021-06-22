@@ -60,11 +60,11 @@ class matriz:
 
     def recorrerF(self):
         eFila=self.eFilas.primero
-        print("\nRecorrido Filas")
+        print("\nRecorrido----Filas")
         while eFila!=None:
             actual=eFila.accesoNodo
             print("\nFila"+str(actual.fila))
-            print("Columna: Valor")
+            print("Columna-> Valor")
             while actual!=None:
                 print(str(actual.columna)+"      "+actual.valor)
                 actual=actual.derecha
@@ -74,16 +74,16 @@ class matriz:
 
     def recorrerC(self):
         eColumna=self.eColumnas.primero
-        print("\nRecorrido columnas:")
+        print("\nRecorrido---- columnas:")
         while eColumna!=None:
             actual=eColumna.accesoNodo
             print("\nColumna"+str(actual.columna))
-            print("fila  Valor")
+            print("Fila->  Valor")
             while actual!=None:
                 print(str(actual.fila)+"      "+actual.valor)
                 actual=actual.abajo
             eColumna=eColumna.siguiente
-        print("Fin recorrido columnas\n")
+        print("Fin recorrido C\n")
 
     def obtenerValorporPosicion(self,fila,columna):
         eFila=self.eFilas.primero
